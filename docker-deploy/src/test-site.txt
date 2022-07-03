@@ -1,0 +1,2 @@
+http://wiki.csie.ncku.edu.tw/ (use for get method chunk)
+http://library.taiwanschoolnet.org/cyberfair2004/C0412100064/profile.html (awesome website for testing get)
