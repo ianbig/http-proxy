@@ -12,8 +12,7 @@
 /**
  * Constructor for scoket
  */
-Server::Server() : connect(new Network()) {
-}
+Server::Server() : connect(new Network()) {}
 
 /**
  * Setup socket for the server on specified port number
@@ -24,10 +23,11 @@ int Server::setupServer(const int port_num) {
       connect.get()->connectSetup<int, struct addrinfo *>(NULL, port_num);
 
   int socket_fd = socketInfo.first;
-  struct addrinfo * serviceinfo = socketInfo.second;
+  struct addrinfo *serviceinfo = socketInfo.second;
 
   int yes = 1;
-  if (setsockopt(socket_fd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes)) == -1) {
+  if (setsockopt(socket_fd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes)) ==
+      -1) {
     // TODO: throw exception
     perror("setsockopt");
     throw std::exception();
@@ -39,7 +39,7 @@ int Server::setupServer(const int port_num) {
     throw std::exception();
   }
 
-  if (listen(socket_fd, 100) == -1) {
+  if (listen(socket_fd, 20) == -1) {
     // TODO: refactor this
     perror("listen");
     throw std::exception();
@@ -77,8 +77,7 @@ int Server::acceptRequest(int socket_fd) {
   return client_connection_fd;
 }
 
-/** 
+/**
  * Destructor for server class
  **/
-Server::~Server() {
-}
+Server::~Server() {}

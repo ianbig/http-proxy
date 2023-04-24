@@ -13,14 +13,12 @@ void HttpLog::openLogFile(std::string path) {
   }
 }
 
-void HttpLog::closeLogFile() {
-  logFile.close();
-}
+void HttpLog::closeLogFile() { logFile.close(); }
 
 void HttpLog::writeLog(std::string toWrite) {
   if (logFile.is_open()) {
     pthread_mutex_lock(&lock);
-    logFile << toWrite << std::endl;
+    std::cout << toWrite << std::endl;
     pthread_mutex_unlock(&lock);
   }
 }

@@ -25,7 +25,7 @@ Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/w
 Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.5,en;q=0.3\n\
 Accept-Encoding: gzip, deflate\n\
 Connection: keep-alive\n";
-  char * recv = client.connectToHost(hostname, port, request);
+  int socketfd = client.setUpSocket(hostname, port);
+  std::string recv = client.connectToHost(hostname, port, request, socketfd);
   std::cout << recv << std::endl;
-  delete[] recv;
 }
